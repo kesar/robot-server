@@ -1,19 +1,12 @@
 const express = require('express')
-const {spawn} = require('child_process')
 
 const app = express()
-const port = 3000
+const port = 7000
 
 app.use(express.json())
 
 app.post('/action', (request, response) => {
     response.send('action!')
-    console.log(request.body)
-
-    const motor = spawn('python3', ['lib/motor.py'])
-    motor.stdout.on('data', function (data) {
-        console.log(data)
-    })
 })
 
 
